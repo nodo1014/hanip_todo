@@ -1,70 +1,182 @@
-# Getting Started with Create React App
+;// TODO: #윈,+쉬,!알,^컨
+#F10::
+  Suspend
+return
+;;Loop -> Pause로 정지
+#F11::
+  Pause
+return
+;; 종료
+#F12::
+ExitApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#y::Reload
 
-## Available Scripts
+!c::
+  Send, {CtrlDown}{c}{CtrlUp}
+Return
+!x::
+  Send, {CtrlDown}{x}{CtrlUp}
+Return
+!v::
+  Send, {CtrlDown}{v}{CtrlUp}
+Return
+;=======페이지 최상단/하단
+; !q::
+; Loop, 10
+; Send, {PgUp}
+; 	Return
 
-In the project directory, you can run:
+; !w::
+; Loop, 10
+; Send, {PgDn}
+; 	Return
 
-### `npm start`
+; 윈도우 컨트롤 우측은 맥 스타일
+; 쉬프트+스페이스로한영
++Space::vk19
+:*:ftw::Free the whales__사용법 :*:단축어::
+  ;Win 키보드
+  ;Ctrl-Window-Alt
+  ;Command-Ctrl+Option
+  ;MAC 키보드
+  ;Ctrl-Option-Command
+  ;Ctrl-Alt-Windows
+  ;실제 키 대응
+  ;보조ctrl-Alt-Ctrl
+  ;============= Win 키보드
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  LCtrl::LWin ; 맥스타일
+  LWin::LAlt
+  LAlt::LCtrl ; 맥스타일
+  RAlt::RCtrl ;
+  sc138::RCtrl ; vk15 한영
+  vk15::RCtrl ;한영키를 Ctrl로
+  ; 한자키 VK 19, SC1F1 
+  AppsKey::RAlt ; MS컴팩트 이모지->앱->한자
+  ;============= magic keyboard ================
+  #If GetKeyState("Scrolllock","T") ; Hotkeys below this can only be activated if ScrollLock is On
+    Loop
+  {
+    if not GetKeyState("Scrolllock", "T") ; Note that we have to keep this because the #If statement doesn't control the hotkey once it's been activated
+      LWin::LAlt
+    LAlt::LWin
+    RWin::RCtrl
+    RAlt::vk19
+    ; =======================================
+    break
+  }
+return
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#if ; this resets the condition so that all hotkeys below this directive can be activated
 
-### `npm test`
+SetCapsLockState, AlwaysOff
+#If GetKeyState("CapsLock", "P")
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+BackSpace::Delete
+Space::vk15
+h::Left
+^h::
+  Send, {ShiftDown}{Left}{ShiftUp}
+  Return
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+j::Down
+k::Up
+l::Right
+^l::
+  Send, {ShiftDown}{Right}{ShiftUp}
+  Return
+; hyper_delete
+m::BackSpace
+,::Delete
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+n::
+  Send, {CtrlDown}{Backspace}{CtrlUp}
+Return
+.::
+  Send, {CtrlDown}{Delete}{CtrlUp}
+Return
+; w::
+; Send, {AltDown}{F4}{AltUp}
+; 	Return
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+i::
+  Send, {CtrlDown}{Left}{CtrlUp}
+Return
+^i::
+  Send, {ShiftDown}{CtrlDown}{Left}{CtrlUp}{ShiftUp}
+Return
 
-### `npm run eject`
+o::
+  Send, {CtrlDown}{right}{CtrlUp}
+Return
+^o::
+  Send, {ShiftDown}{CtrlDown}{right}{CtrlUp}{ShiftUp}
+Return
+9::
+  Send, {home}
+Return
+0::
+  Send, {end}
+Return
+^9::
+  Send, {ShiftDown}{home}{ShiftUp}
+Return
+^0::
+  Send, {ShiftDown}{end}{ShiftUp}
+Return
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+d::^!PgUp
+f::^!PgDn
+; Send, {CtrlDown}{d}{CtrlUp}{CtrlDown}{c}{CtrlUp}
+; Return
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+; 홈엔드,
+Left::Home
+Right::End
+Up::PgUp
+Down::PgDn
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+; 마우스
+; 창 최소화 - 복구 win+down, Alt+tab
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+c::
+  Send, {CtrlDown}{c}{CtrlUp}
+Return
+x::
+  Send, {CtrlDown}{x}{CtrlUp}
+Return
+v::
+  Send, {CtrlDown}{v}{CtrlUp}
+Return
 
-## Learn More
+Tab::
+  Send, {LWinDown}{Down}{LWinUp}
+Return
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Enter::^z
+\::CapsLock
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+;vscode 스플릿창 좌/우
+$[::
+  Send {CtrlDown}k{CtrlUp}{CtrlDown}{Left}{CtrlUp}
+Return
+$]::
+  Send {CtrlDown}k{CtrlUp}{CtrlDown}{Right}{CtrlUp}
+Return
+/::
+  Send, {CtrlDown}/{CtrlUp}
+return
+; 방향키 
 
-### Code Splitting
+;// TODO: 
+1:: Run notepad.exe C:\Users\kang\Desktop\오토핫키.txt
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#If
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*CapsLock::
+  KeyWait, CapsLock
+  IF A_ThisHotkey = *CapsLock
+    Send, {Esc}
+Return
