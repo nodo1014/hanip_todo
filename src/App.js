@@ -23,9 +23,7 @@ import TodoList from './component/TodoList';
     },
     {
       id: 2,
-      isDone : true,
-      content : 'Hello 파이썬',
-      createDate: new Date().getTime(),
+      isDone : true,createDate: new Date().getTime(),
     },
   ]
   const idRef = useRef(3);
@@ -63,7 +61,7 @@ import TodoList from './component/TodoList';
     return (
     <div className='App'>
       <Header />
-      <TodoEditor onUpdate={onUpdate} onCreate={onCreate}/>
+      <TodoEditor onCreate={onCreate}/>
       <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>  
     </div>
   );
