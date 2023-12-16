@@ -23,7 +23,10 @@ import TodoList from './component/TodoList';
     },
     {
       id: 2,
-      isDone : true,createDate: new Date().getTime(),
+      isDone : true,
+      content :'집둥',
+      createDate: new Date().getTime(),
+  
     },
   ]
   const idRef = useRef(3);
