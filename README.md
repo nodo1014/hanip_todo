@@ -1,10 +1,16 @@
-;// TODO: #윈,+쉬,!알,^컨
+;// TODO: #윈도우,+쉬프트,!알트,^컨트롤
+; https://www.autohotkey.com/docs/v1/misc/Remap.htm
+LAlt::LCtrl
+LWin::LAlt
+LCtrl::LWin
+RAlt::RCtrl
+
 #F10::
-  Suspend
+Suspend
 return
 ;;Loop -> Pause로 정지
 #F11::
-  Pause
+Pause
 return
 ;; 종료
 #F12::
@@ -12,15 +18,6 @@ ExitApp
 
 #y::Reload
 
-!c::
-  Send, {CtrlDown}{c}{CtrlUp}
-Return
-!x::
-  Send, {CtrlDown}{x}{CtrlUp}
-Return
-!v::
-  Send, {CtrlDown}{v}{CtrlUp}
-Return
 ;=======페이지 최상단/하단
 ; !q::
 ; Loop, 10
@@ -33,150 +30,200 @@ Return
 ; 	Return
 
 ; 윈도우 컨트롤 우측은 맥 스타일
-; 쉬프트+스페이스로한영
-+Space::vk19
-:*:ftw::Free the whales__사용법 :*:단축어::
-  ;Win 키보드
-  ;Ctrl-Window-Alt
-  ;Command-Ctrl+Option
-  ;MAC 키보드
-  ;Ctrl-Option-Command
-  ;Ctrl-Alt-Windows
-  ;실제 키 대응
-  ;보조ctrl-Alt-Ctrl
-  ;============= Win 키보드
+; LCtrl::LWin ; 맥스타일
+; LWin::LAlt
+; LAlt::LCtrl ; 맥스타일
+; sc138::RCtrl ; vk15 한영
+; 레노버 키보드 screenshot
+vk15::RCtrl
+PrintScreen::vk15	;vk15한글
+F19::vk15	;vk19한자
+;한자키 VK 19, SC1F1 
+AppsKey::RAlt ; MS컴팩트 이모지->앱->한자
+; 부트캠프
 
-  LCtrl::LWin ; 맥스타일
-  LWin::LAlt
-  LAlt::LCtrl ; 맥스타일
-  RAlt::RCtrl ;
-  sc138::RCtrl ; vk15 한영
-  vk15::RCtrl ;한영키를 Ctrl로
-  ; 한자키 VK 19, SC1F1 
-  AppsKey::RAlt ; MS컴팩트 이모지->앱->한자
-  ;============= magic keyboard ================
-  #If GetKeyState("Scrolllock","T") ; Hotkeys below this can only be activated if ScrollLock is On
-    Loop
-  {
-    if not GetKeyState("Scrolllock", "T") ; Note that we have to keep this because the #If statement doesn't control the hotkey once it's been activated
-      LWin::LAlt
-    LAlt::LWin
-    RWin::RCtrl
-    RAlt::vk19
-    ; =======================================
-    break
-  }
-return
 
-#if ; this resets the condition so that all hotkeys below this directive can be activated
+; ::o1:: ① ; o1입력시 ①로 변환
+; ::o2:: ②
+; ::o3:: ③
+; ::o4:: ④
+; ::o5:: ⑤
+; ::o6:: ⑥
+; ::o7:: ⑦
+; ::o8:: ⑧
+; ::o9:: ⑨
+
+; ::]date::
+;   FormatTime, CurrentDateTime,, yyyy-MM-dd (ddd)
+;   SendInput %CurrentDateTime%
+; return
+
+; ::]time::
+;   FormatTime, CurrentDateTime,, yyyy/MM/dd (ddd)-HH:mm
+;   SendInput %CurrentDateTime%
+; return
+; 슬립방지
+; #m:: 
+; 	Loop 
+; 	{
+; 		MouseGetPos, MouseX, MouseY
+; 		MouseMove, MouseX+10, MouseY+10, 10
+; 		MouseMove, MouseX, MouseY, 10
+; 		sleep 10000
+; 	} until GetKeyState("LButton")
+; return
+
+
 
 SetCapsLockState, AlwaysOff
-#If GetKeyState("CapsLock", "P")
+
+#If GetKeyState("Capslock","P")
 
 
+
+; 9::PgUp
+; 0::PgDn
 BackSpace::Delete
-Space::vk15
-h::Left
-^h::
-  Send, {ShiftDown}{Left}{ShiftUp}
-  Return
 
+h::Left
 j::Down
 k::Up
 l::Right
-^l::
-  Send, {ShiftDown}{Right}{ShiftUp}
-  Return
-; hyper_delete
-m::BackSpace
-,::Delete
+^h::
+Send, {ShiftDown}{Left}{ShiftUp}
+Return
+^k::
+Send, {ShiftDown}{Right}{ShiftUp}
+Return
+
+9::Home
+0::End
+^9::
+Send, {ShiftDown}{Home}{ShiftUp}
+Return
+^0::
+Send, {ShiftDown}{End}{ShiftUp}
+Return
+
+Space::vk15
+
+i::
+Send, {CtrlDown}{Left}{CtrlUp}
+Return
+o::
+Send, {CtrlDown}{Right}{CtrlUp}
+Return
+^i::
+Send, {ShiftDown}{CtrlDown}{Left}{CtrlUp}{ShiftUp}
+Return
+^o::
+Send, {ShiftDown}{CtrlDown}{Right}{CtrlUp}{ShiftUp}
+Return
+
+!9::
+Send, {ShiftDown}{Home}{ShiftUp}
+Return
+!0::
+Send, {ShiftDown}{End}{ShiftUp}
+Return
 
 n::
-  Send, {CtrlDown}{Backspace}{CtrlUp}
-Return
+Send, {CtrlDown}{BackSpace}{CtrlUp}
+m::BackSpace
+,::Delete
 .::
-  Send, {CtrlDown}{Delete}{CtrlUp}
+Send, {CtrlDown}{Delete}{CtrlUp}
 Return
+
+
+
+; i::PgUp
+; o::PgDn
+
+
 ; w::
 ; Send, {AltDown}{F4}{AltUp}
 ; 	Return
 
-i::
-  Send, {CtrlDown}{Left}{CtrlUp}
-Return
-^i::
-  Send, {ShiftDown}{CtrlDown}{Left}{CtrlUp}{ShiftUp}
-Return
 
-o::
-  Send, {CtrlDown}{right}{CtrlUp}
-Return
-^o::
-  Send, {ShiftDown}{CtrlDown}{right}{CtrlUp}{ShiftUp}
-Return
-9::
-  Send, {home}
-Return
-0::
-  Send, {end}
-Return
-^9::
-  Send, {ShiftDown}{home}{ShiftUp}
-Return
-^0::
-  Send, {ShiftDown}{end}{ShiftUp}
-Return
 
+
+;============== 가상 화면 전환
+; Left::
+; Send {Ctrl Down}{LWinDown}{Left}{Ctrl Up}{LWinUp}
+; Return
+; Right::
+; Send {Ctrl Down}{LWinDown}{Right}{Ctrl Up}{LWinUp}
+; Return
+;==== Ctrl D 업글::단어선택+복사 이므로, 삭제, 오려내기까지. 다중 역할
+;smemo 캡처
 d::^!PgUp
 f::^!PgDn
 ; Send, {CtrlDown}{d}{CtrlUp}{CtrlDown}{c}{CtrlUp}
 ; Return
 
-; 홈엔드,
+
+;방향키 홈엔드,
 Left::Home
 Right::End
 Up::PgUp
 Down::PgDn
 
 ; 마우스
+
 ; 창 최소화 - 복구 win+down, Alt+tab
 
 c::
-  Send, {CtrlDown}{c}{CtrlUp}
+Send, {CtrlDown}{c}{CtrlUp}
 Return
 x::
-  Send, {CtrlDown}{x}{CtrlUp}
+Send, {CtrlDown}{x}{CtrlUp}
 Return
 v::
-  Send, {CtrlDown}{v}{CtrlUp}
+Send, {CtrlDown}{v}{CtrlUp}
 Return
 
 Tab::
-  Send, {LWinDown}{Down}{LWinUp}
+Send, {LWinDown}{Down}{LWinUp}
+Return
+; m::
+; Send, {AltDown}{Tab}{AltUp}
+
+; Return
+; Space::Click
+
+
+
+; Space::vk15
+
+
+; Enter::Esc
+Enter::
+Send, {End}{Enter}
 Return
 
-Enter::^z
 \::CapsLock
 
-;vscode 스플릿창 좌/우
-$[::
-  Send {CtrlDown}k{CtrlUp}{CtrlDown}{Left}{CtrlUp}
+^Enter::
+Send, {Home}{Enter}{Up}
 Return
-$]::
-  Send {CtrlDown}k{CtrlUp}{CtrlDown}{Right}{CtrlUp}
-Return
-/::
-  Send, {CtrlDown}/{CtrlUp}
-return
-; 방향키 
 
+
+
+
+; Tab::
+; Send {AltDown}{Tab}{AltUp}
+; Return
+; CapsLock::
+; Send {CtrlDown}{Tab}{CtrlUp}
+; Return
 ;// TODO: 
 1:: Run notepad.exe C:\Users\kang\Desktop\오토핫키.txt
 
 #If
 
 *CapsLock::
-  KeyWait, CapsLock
-  IF A_ThisHotkey = *CapsLock
-    Send, {Esc}
+KeyWait, CapsLock
+IF A_ThisHotkey = *CapsLock
+	Send, {Esc}
 Return
