@@ -1,0 +1,27 @@
+/* 
+.TodoList {
+    display: flex;
+    flex-direction: column;
+}
+ */
+
+.TodoList > input {
+    width: 100%;
+    /* flex: 1; */
+    border: none;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    padding: 15px 0px;
+}
+/* border는 박스의 전체 크기도 늘어남. outline은 X */
+.TodoList > input:focus {
+    /* outline: none; */
+    outline: none;
+    border-bottom: 1px solid rgb(37, 147, 255);
+
+}
+
+.TodoList > .todo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;   
+}
