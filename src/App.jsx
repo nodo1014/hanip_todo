@@ -53,13 +53,16 @@ function App() {
   }
 
 //삭제
-  // const onDelete =() =>{}
+  const onDelete =(targetId) =>{
+    const newTodos = todos.filter((todo)=> todo.id !== targetId)
+    setTodos(newTodos);
+  }
 
    return (
     <div className="App">
       <Header />
       <Editor onCreate={onCreate}/>
-      <TodoList todos={todos} onUpdate={onUpdate}/>
+      <TodoList todos={todos} onUpdate={onUpdate} onDelete={onDelete}/>
     </div>
   )
 }

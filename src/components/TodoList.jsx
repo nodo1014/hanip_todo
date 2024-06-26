@@ -2,7 +2,7 @@ import React from 'react'
 import TodoItem from './TodoItem'
 import "./TodoList.css";
 
-function TodoList({todos, onUpdate}) {
+function TodoList({todos, onUpdate, onDelete}) {
   return (
     <div className="TodoList">
         <h4>TodoList 😎</h4>
@@ -10,7 +10,7 @@ function TodoList({todos, onUpdate}) {
         <div className="todo-container">
             {
               todos.map((todo) => {
-                return <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate}/>
+                return <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
               })
             }
             
