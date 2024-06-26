@@ -2,8 +2,10 @@
 https://chapter7-dun.vercel.app/
 
 ### useState 로 input 에서 onCreate 로 Todo 생성만 연습.
-```
+
+
  setTodo([newTodo, ...todos])
+
  ```
  const onCreate = (content) => {
     const newTodo = {
@@ -16,6 +18,7 @@ https://chapter7-dun.vercel.app/
   }
  ```
  onUpdate
+
  ```
    const onUpdate = (targetId)=>{
 //     setTodos(todos.map((todo)=>
@@ -40,7 +43,8 @@ https://chapter7-dun.vercel.app/
  - useState("")
  - onClick : e.target.value 
  - onClick
- ```
+
+```
 function Editor({onCreate}) {
 const [content, setContent] = useState("");
 
@@ -60,7 +64,9 @@ const onSubmit = () => {
   )
 }
  ```
+
  ## 삭제와 수정 폼 (체크박스, 삭제 버튼)
+
  ```
  function TodoItem({todo, onUpdate, onDelete}) {
   const onToggle = () => {
