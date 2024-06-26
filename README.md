@@ -6,7 +6,7 @@ https://chapter7-dun.vercel.app/
 
  setTodo([newTodo, ...todos])
 
- ```react
+ ```javascript
  const onCreate = (content) => {
     const newTodo = {
       id : 3,
@@ -19,7 +19,7 @@ https://chapter7-dun.vercel.app/
  ```
  onUpdate
 
- ```react
+ ```javascript
    const onUpdate = (targetId)=>{
 //     setTodos(todos.map((todo)=>
 //       todo.id === targetId
@@ -44,7 +44,7 @@ https://chapter7-dun.vercel.app/
  - onClick : e.target.value 
  - onClick
 
-```react
+```javascript
 function Editor({onCreate}) {
 const [content, setContent] = useState("");
 
@@ -67,7 +67,7 @@ const onSubmit = () => {
 
  ## 삭제와 수정 폼 (체크박스, 삭제 버튼)
 
- ```react
+ ```javascript
  function TodoItem({todo, onUpdate, onDelete}) {
   const onToggle = () => {
     onUpdate(todo.id);
