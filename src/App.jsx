@@ -30,14 +30,36 @@ function App() {
       content: content,
       createdDate: new Date().getTime()
     }
-
     setTodos([newTodo, ...todos]);
   }
+// 수정과 삭제는 id 필요.
+// 수정: isDone 확인 후, toggle. map + if 또는 3항 연산자
+  const onUpdate = (targetId)=>{
+//     setTodos(todos.map((todo)=>
+//       todo.id === targetId
+//     ? {...todo, isDone: !todo.isDone}
+//   : todo
+// ))
+    const newTodos = todos.map((todo) => {
+      if (todo.id === targetId) {
+        return {
+         ...todo,
+          isDone:!todo.isDone
+        }
+      }
+      return todo;
+    })
+    setTodos(newTodos);
+  }
+
+//삭제
+  // const onDelete =() =>{}
+
    return (
     <div className="App">
       <Header />
-      <Editor  onCreate={onCreate}/>
-      <TodoList todos={todos} />
+      <Editor onCreate={onCreate}/>
+      <TodoList todos={todos} onUpdate={onUpdate}/>
     </div>
   )
 }

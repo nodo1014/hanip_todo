@@ -6,7 +6,6 @@ const [content, setContent] = useState("");
 
 const onChangeContent = (e) => {
   setContent(e.target.value);
-  console.log(content);
 }
 
 const onSubmit = () => {
